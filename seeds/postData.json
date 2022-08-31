@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Tablet",
+        "content": "Mommy, I can't find my tablet!",
+        "user_id": 1
+    },
+    {
+        "id": 2,
+        "title": "How to 'Toddler-proof' your electronics",
+        "content": "Hide them!",
+        "user_id": 2
+    },
+    {
+        "id": 3,
+        "title": "Making time for coding homework",
+        "content": "How many hours a day should I be practicing coding and/or working on homework?",
+        "user_id": 3
+    },
+    {
+        "id": 4,
+        "title": "Stove",
+        "content": "U left the stove on",
+        "user_id": 4
+    },
+    {
+        "id": 5,
+        "title": "Food",
+        "content": "I has hunger!",
+        "user_id": 5
+    }
+]
