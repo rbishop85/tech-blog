@@ -1,21 +1,26 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 // Client side routes/views
 
 // Route "/"
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['username', 'ASC']],
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        },
+      ],
+      order: [['updated_at', 'ASC']],
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const posts = postData.map((project) => project.get({ plain: true }));
 
     res.render('homepage', {
-      users,
+      posts,
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
@@ -23,13 +28,6 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-
-
-
-
-
 
 // Route "/login"
 
