@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.navbar {
+    height: 100px
+}
+
+#login-background {
+    height: calc(100% - 100px);
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    padding-top: 1%;
+    margin-bottom: 1%;
+    margin-left: auto;
+}
+
+#signin-message {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 3%;
+    border: #343a40;
+    border-style: solid;
+    border-width: 1px;
+    align-self: center;
+}
+
+#register-message {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1%;
+    border: #343a40;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.form-signin, .form-register {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-control, .form-register .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.form-signin .form-control:focus, .form-register .form-control:focus {
+    z-index: 2;
+}
+  
+.form-signin input[type="username"], .form-register input[type="username"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+  
+.form-signin input[type="password"], .form-register input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
