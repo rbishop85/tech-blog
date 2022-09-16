@@ -1,7 +1,13 @@
+<div class="bg-warning">
+    <p>Homepage</p>
+</div>
+
+<main class="container">
+
 {{#each posts as |post| }}
 <div class="container d-flex justify-content-center my-5">
   <div class="card" style="width: 80%;">
-    <a href="#" class="link-dark text-decoration-none">
+    <a href="/post/{{id}}" class="link-dark text-decoration-none">
       <div class="card-body">
         <div class="card-title d-flex justify-content-between">
           <h5>{{title}}</h5>
@@ -14,3 +20,5 @@
   </div>
 </div>
 {{/each}}
+
+</main>
