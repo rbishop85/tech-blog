@@ -7,7 +7,7 @@ html, body {
     height: 100px
 }
 
-#login-background {
+#login-background, #register-background {
     height: calc(100% - 100px);
     display: flex;
     align-items: center;
@@ -19,17 +19,7 @@ html, body {
     margin-left: auto;
 }
 
-#signin-message {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 3%;
-    border: #343a40;
-    border-style: solid;
-    border-width: 1px;
-    align-self: center;
-}
-
-#register-message {
+#register-message, #login-message {
     background-color: #f8f9fa;
     border-radius: 10px;
     padding: 1%;

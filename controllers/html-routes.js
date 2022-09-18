@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 // Client side routes/views
 
 // Route "/"
-// Prevent non logged in users from viewing the homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -30,7 +29,6 @@ router.get('/', async (req, res) => {
 });
 
 // Route "/login"
-
 router.get('/login', (req, res) => {
     // If a session exists, redirect the request to the homepage
     if (req.session.logged_in) {
@@ -40,6 +38,17 @@ router.get('/login', (req, res) => {
   
     res.render('login');
   });
+
+
+router.get('/register', (req, res) => {
+  // If a session exists, redirect the request to the homepage
+  if (req.session.logged_in) {
+     res.redirect('/');
+     return;
+   }
+  
+   res.render('register');
+});
 
 // Route "/dashboard"
 router.get('/dashboard', async (req, res) => {
