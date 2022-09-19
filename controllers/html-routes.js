@@ -51,24 +51,26 @@ router.get('/register', (req, res) => {
 });
 
 // Route "/dashboard"
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
+
   try {
-    const postData = await Post.findAll({
+    // Find the logged in user's data based on the session data
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
       include: [
-        {
-          model: User,
-          attributes: ['username']
-        },
+        { 
+          model: Post,
+        }
       ],
-      order: [['updated_at', 'ASC']],
     });
 
-    const posts = postData.map((project) => project.get({ plain: true }));
+    const user = userData.get({ plain: true });
+
+    console.log(user);
 
     res.render('dashboard', {
-      // posts,
-      // // Pass the logged in flag to the template
-      // logged_in: req.session.logged_in,
+      ...user,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
