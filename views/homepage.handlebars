@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="card-title d-flex justify-content-between">
           <h5>{{title}}</h5>
-          <span>Author: {{user.username}}</span>
+          <span>Author: {{capitalize user.username}}</span>
           <span>Posted: {{format_date createdAt}}</span>
         </div>
         <p class="card-text">{{format_content content}}</p>

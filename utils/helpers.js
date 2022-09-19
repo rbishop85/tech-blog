@@ -1,7 +1,7 @@
 module.exports = {
     format_date: (date) => {
         // Format date as MM/DD/YYYY
-        return date.toLocaleDateString();
+        return date.toLocaleString();
       },
 
     format_content: (content) => {
@@ -10,5 +10,9 @@ module.exports = {
         } else {
             return content;
         }
+    },
+
+    capitalize: (word) => {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
     }
 };

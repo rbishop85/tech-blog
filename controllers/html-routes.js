@@ -79,6 +79,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 
 // Route "/dashboard/new" <-- new posts
+router.get('/newpost', withAuth, async (req, res) => {
+  res.render('newPost', {
+    logged_in: req.session.logged_in
+  })
+
+});
 
 // Route "/dashboard/edit/:id" <-- edit post
 
