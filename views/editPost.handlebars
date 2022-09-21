@@ -4,15 +4,15 @@
             <h3 class="mb-3 font-weight-normal">Edit Blog Post!</h3>
             <div class="form-group my-3">
                 <label for="postTitle" class="visually-hidden">Blog Title</label>
-                <textarea class="form-control" id="postTitle" rows="1" placeholder="Blog Title:" required autofocus>{{title}}</textarea>
+                <textarea class="form-control" id="postTitle" rows="1" placeholder="Blog Title:" style="resize: none;" required autofocus>{{title}}</textarea>
             </div>
             <div class="form-group my-3">
                 <label for="postContent" class="visually-hidden">Blog Content</label>
-                <textarea class="form-control" id="postContent" rows="10" placeholder="Blog Content:" required>{{content}}</textarea>
+                <textarea class="form-control" id="postContent" rows="10" placeholder="Blog Content:" style="resize: none;" required>{{content}}</textarea>
             </div>
             <a class="visually-hidden" id="blog_id">{{id}}</a>
             <div>
-                <button class="btn btn-lg btn-info" id="editPost">Edit Blog Post</button>
+                <button class="btn btn-lg btn-info mb-3" id="editPost">Submit Blog Edit</button>
             </div>
             <div>
             <button class="btn btn-lg btn-danger" id="deletePost">Delete Blog Post</button>
