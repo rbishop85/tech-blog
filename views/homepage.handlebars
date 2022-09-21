@@ -5,12 +5,25 @@
   <div class="card" style="width: 80%;">
     <a href="/post/{{id}}" class="link-dark text-decoration-none">
       <div class="card-body">
-        <div class="card-title d-flex justify-content-between">
+        <div class="card-title d-flex justify-content-center">
           <h5>{{title}}</h5>
-          <span>Author: {{capitalize user.username}}</span>
-          <span>Posted: {{format_date createdAt}}</span>
         </div>
+        <hr class="my-1">
         <p class="card-text">{{format_content content}}</p>
+        <hr class="my-1">
+        <div class="card-title d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <span>Author: {{capitalize user.username}}</span>
+          </div>
+          <div class="d-flex flex-column align-items-end">
+            <div>
+              <small class="col text-muted">Posted: {{format_date createdAt}}</small>
+            </div>
+            <div>
+              <small class="col text-muted">Updated: {{format_date updatedAt}}</small>
+            </div>
+          </div>
+        </div>
       </div>
     </a>
   </div>

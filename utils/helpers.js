@@ -5,8 +5,8 @@ module.exports = {
       },
 
     format_content: (content) => {
-        if(content.length > 100) {
-            return (content.substring(0,100) + "...");
+        if(content.length > 500) {
+            return (content.substring(0,500) + "...");
         } else {
             return content;
         }
