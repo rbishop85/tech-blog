@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
           attributes: ['username']
         },
       ],
-      order: [['updated_at', 'ASC']],
+      order: [['updated_at', 'DESC']],
     });
 
     const posts = postData.map((project) => project.get({ plain: true }));
@@ -62,11 +62,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
           model: Post,
         }
       ],
+      order: [[Post, 'updated_at', 'DESC']],
     });
 
     const user = userData.get({ plain: true });
-
-    console.log(user);
 
     res.render('dashboard', {
       ...user,
@@ -115,6 +114,21 @@ router.get('/post/:id', async (req, res) => {
     console.log(post);
 
     res.render('post', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    const post = postData.get({ plain: true });
+
+    res.render('editPost', {
       ...post,
       logged_in: req.session.logged_in
     });
