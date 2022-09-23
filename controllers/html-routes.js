@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
           attributes: ['username']
         },
       ],
-      order: [['updated_at', 'DESC']],
+      order: [['created_at', 'DESC']],
     });
 
     const posts = postData.map((project) => project.get({ plain: true }));
@@ -115,7 +115,8 @@ router.get('/post/:id', async (req, res) => {
 
     res.render('post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      logged_in_user_id: req.session.user_id
     });
   } catch (err) {
     res.status(500).json(err);

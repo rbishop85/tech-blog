@@ -21,5 +21,13 @@ module.exports = {
 
     capitalize: (word) => {
         return (word.charAt(0).toUpperCase() + word.slice(1));
+    },
+
+    if_eq: (a, b, opts) => {
+        if (a == b) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
     }
 };

@@ -17,6 +17,11 @@ body {
     align-items: center;
 }
 
+.col-lg-9, .col-lg-8, .col-11 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .form-background {
     height: calc(100% - 100px);
     display: flex;
