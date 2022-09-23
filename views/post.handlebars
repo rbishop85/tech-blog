@@ -25,6 +25,7 @@
           <pre class="card-text">{{content}}</pre>
           <hr class="my-1" />
         </section>
+        {{!-- If user is logged in, show the section for leaving a comment on the blog post --}}
         {{#if logged_in}}
           <div class="mb-3 mx-3">
             <form id="form-newComment">
@@ -46,6 +47,7 @@
               </div>
             </form>
           </div>
+        {{!-- If user is not logged in, post a message informing them to log in to leave a comment --}}
         {{else}}
           <div class="mb-5 mx-3">
             <h3 class="mb-3 font-weight-normal">Log In to Leave A Comment!</h3>
@@ -55,6 +57,7 @@
     </div>
   </div>
 
+  {{!-- If there are comments for this blog post, render the following code --}}
   {{#if comments.length}}
   <div class="row d-flex justify-content-center my-5">
     <div class="card bg-dark col-11 col-lg-8">
@@ -67,6 +70,7 @@
           </div>
         </header>
         <section class="mb-5 mx-3">
+          {{!-- For each comment, render the following code --}}
           {{#each comments as |comment|}}
           <div class="container d-flex justify-content-center my-1">
             <div class="card" style="width: 100%;">
@@ -77,9 +81,12 @@
                 </div>
                 <hr class="my-1" />
                 <pre class="card-text">{{content}}</pre>
-                {{!-- {{#if_eq user_id ../logged_in_user_id}}
-                  <small class="text-muted">You wrote this!</small>
-                {{/if_eq}} --}}
+                {{!-- If comment is by current user, add a delete button to comment --}}
+                {{#if_eq user_id ../logged_in_user_id}}
+                <div class="d-flex justify-content-end">
+                  <button type="button"  class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" data-id="{{comment.id}}">Delete</button>
+                </div>
+                {{/if_eq}}
               </div>
             </div>
           </div>
@@ -90,7 +97,24 @@
   </div>
   {{/if}}
 
+
+
 </main>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmModal"  data-bs-backdrop="static" tabindex="-1" aria-labelledby="deleteConfirmModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark border border-5 border-dark">
+      <div class="modal-header bg-secondary">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you wish to delete this comment?</h5>
+      </div>
+      <div class="modal-footer bg-secondary">
+        <button type="button" class="btn btn-danger" id="deleteComment">Delete</button>
+        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{#if logged_in}}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
