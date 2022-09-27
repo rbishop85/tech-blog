@@ -30,7 +30,7 @@ This project is intended as a homework assignment for class.  Questions, comment
 
 > Video demoing tech blog in action.
 
-./
+https://user-images.githubusercontent.com/103389448/192459366-988c1cad-8fad-4966-aa0d-834da197766b.mp4
 
 ---
 
