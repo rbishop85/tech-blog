@@ -1,16 +1,15 @@
 module.exports = {
+    // Formats date including time
     format_date: (date) => {
-        // Format date as MM/DD/YYYY
         return date.toLocaleString();
       },
 
-      format_date_short: (date) => {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        // Format date as MM/DD/YYYY
+    // Formats date as just the month, day and year
+    format_date_short: (date) => {
         return date.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: '2-digit'});
       },
 
-
+    // Displays only the first 500 characters of content
     format_content: (content) => {
         if(content.length > 500) {
             return (content.substring(0,500) + "...");
@@ -19,10 +18,12 @@ module.exports = {
         }
     },
 
+    // Capitalizes the first character in a given word
     capitalize: (word) => {
         return (word.charAt(0).toUpperCase() + word.slice(1));
     },
 
+    // Helper function for handlebars that allows {{#if}} functionality but allows you to compare two variables
     if_eq: (a, b, opts) => {
         if (a == b) {
             return opts.fn(this);
