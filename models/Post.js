@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 
 class Post extends Model {}
 
+// Post database table setup
+
 Post.init(
   {
     id: {

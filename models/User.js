@@ -1,6 +1,3 @@
-// Copied from Activity 24(removed email), make sure to check over later to see if functions all line up
-
-
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
@@ -10,6 +7,8 @@ class User extends Model {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
+
+// User database table setup
 
 User.init(
   {
@@ -35,7 +34,9 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
+        // When creating a new user make sure to hash the password
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        // When creating a new user make sure to convert the username to lower case
         newUserData.username = newUserData.username.toLowerCase();
         return newUserData;
       },

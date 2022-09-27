@@ -10,14 +10,17 @@
 </head>
 
 <body class="bg-secondary">
+  {{!-- Navbar --}}
   <header class="navbar bg-dark navbar-expand fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand link-light" href="/"><h1>Tech Blog!</h1></a>
       <div class="navbar-nav">
+        {{!-- If user is logged in, include links for dashboard and logout --}}
         {{#if logged_in}}
         <a href="/dashboard" class="link-light">Dashboard</a> 
         <span class="text-light">&nbsp;|&nbsp;</span>
         <a href="#" id="logout" class="link-light">Logout</a>
+        {{!-- If user is not logged in, include links for logging in and registering new user --}}
         {{else}}
         <a href="/login" class="link-light">Login</a> 
         <span class="text-light">&nbsp;|&nbsp;</span>

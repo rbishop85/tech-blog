@@ -6,6 +6,7 @@ const withAuth = require('../../utils/auth');
 router.post('/new', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
+      // Utilize data sent over in the body as well as the currently logged in user
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -21,6 +22,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.update(req.body, {
       where: {
+        // Update the post matching the id included in the parameters as long as it was also created by the logged in user 
         id: req.params.id,
         user_id: req.session.user_id,
       },
@@ -37,10 +39,12 @@ router.put('/edit/:id', withAuth, async (req, res) => {
   }
 });
 
+// DELETE existing post
 router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
+        // Delete the post matching the id included in the parameters as long as it was also created by the logged in user 
         id: req.params.id,
         user_id: req.session.user_id,
       },

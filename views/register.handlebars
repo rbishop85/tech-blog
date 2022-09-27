@@ -1,3 +1,4 @@
+{{!-- Form for registering new user --}}
 <div class="align-items-center form-background">
   <div class="container text-center">
     <form class="form-register">
@@ -6,8 +7,10 @@
       <input type="username" id="registerUsername" class="form-control" placeholder="Username" required autofocus>
       <label for="registerPassword" class="visually-hidden">Password</label>
       <input type="password" id="registerPassword" class="form-control" placeholder="Password" required>
+      {{!-- Register button --}}
       <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">Register and Sign In</button>
     </form>
+    {{!-- Button to take you to login page instead --}}
     <a href="/login" id="login-message">Already have an account? Login!</a>
   </div>
 </div>

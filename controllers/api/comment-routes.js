@@ -6,6 +6,7 @@ const withAuth = require('../../utils/auth');
 router.post('/new', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
+      // Create a new comment using the info included in the request body, as well as the currently logged in user
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -16,11 +17,12 @@ router.post('/new', withAuth, async (req, res) => {
   }
 });
 
-// DELETE Comment
+// DELETE existing Comment
 router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
     const postData = await Comment.destroy({
       where: {
+        // Delete the comment matching the id included in the parameters as long as it was also created by the logged in user 
         id: req.params.id,
         user_id: req.session.user_id,
       },

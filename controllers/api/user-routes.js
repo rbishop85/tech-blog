@@ -4,8 +4,10 @@ const { User } = require('../../models');
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
+    // Create a new user based on the data included in the request body
     const userData = await User.create(req.body);
 
+    // Create session variables based on the newly created user
     req.session.user_id = userData.id;
     req.session.logged_in = true;
     req.session.save(() => {
@@ -16,6 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Login with a user
 router.post('/login', async (req, res) => {
   try {
     // Find the user who matches the posted username
@@ -50,9 +53,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Logout from current user
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
-    // Remove the session variables
+    // Remove the current session variables
     req.session.destroy(() => {
       res.status(204).end();
     });
@@ -61,7 +65,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// Check if supplied username already exists
+// Check if username supplied username exists in database
 router.get('/available/:username', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { username: req.params.username }

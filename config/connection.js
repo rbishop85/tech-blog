@@ -1,8 +1,10 @@
+// Sets up connection to database
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
 let sequelize;
 
+// If the app has the info for jawsdb it'll use that instead of the hardcoded env variables
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {

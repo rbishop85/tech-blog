@@ -2,6 +2,7 @@
     <div class="container text-center">
         <form id="form-editPost">
             <h3 class="mb-3 font-weight-normal">Edit Blog Post!</h3>
+            {{!-- Blog title and content automatically filled with current data about blog post --}}
             <div class="form-group my-3">
                 <label for="postTitle" class="visually-hidden">Blog Title</label>
                 <textarea class="form-control" id="postTitle" rows="1" placeholder="Blog Title:" style="resize: none;" required autofocus>{{title}}</textarea>
@@ -11,9 +12,11 @@
                 <textarea class="form-control" id="postContent" rows="10" placeholder="Blog Content:" style="resize: none;" required>{{content}}</textarea>
             </div>
             <div>
+                {{!-- Button for submitting post edits, includes id of post --}}
                 <button class="btn btn-lg btn-info mb-3" id="editPost" data-id="{{id}}">Submit Blog Edit</button>
             </div>
             <div>
+                {{!-- Hitting delete button activates modal to confirm --}}
                 <button type="button"  class="btn btn-lg btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">Delete Blog Post</button>
             </div>
         </form>
@@ -28,6 +31,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Are you sure you wish to delete this blog post?</h5>
       </div>
       <div class="modal-footer bg-secondary">
+        {{!-- Hitting delete button in modal will initiate actual delete script --}}
         <button type="button" class="btn btn-danger" id="deletePost" data-id="{{id}}">Delete</button>
         <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancel</button>
       </div>
